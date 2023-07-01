@@ -1,23 +1,24 @@
-import openai
 import subprocess
-import os
-from docx import Document
-
-# Set up your OpenAI API credentials
-openai.api_key = 'key'
+import importlib.util
 
 # Check if the required packages are installed
-required_packages = ['python-docx']
+required_packages = ['openai', 'python-docx']
+
 missing_packages = []
 for package in required_packages:
-    try:
-        __import__(package)
-    except ImportError:
+    if importlib.util.find_spec(package) is None:
         missing_packages.append(package)
 
 # Install missing packages using pip
 if missing_packages:
-    subprocess.check_call(['pip3', 'install'] + missing_packages)
+    subprocess.check_call(['pip', 'install'] + missing_packages)
+
+import openai
+import os
+from docx import Document
+
+# Set up your OpenAI API credentials
+openai.api_key = 'YOUR_API_KEY'
 
 # Get the current directory
 current_directory = os.path.dirname(os.path.abspath(__file__))
