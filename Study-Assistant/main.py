@@ -13,9 +13,16 @@ for package in required_packages:
 if missing_packages:
     subprocess.check_call(['pip', 'install'] + missing_packages)
 
+# Continue with the rest of your code
 import openai
 import os
 from docx import Document
+
+# Set up your OpenAI API credentials
+openai.api_key = 'YOUR_API_KEY'
+
+# Rest of your code...
+
 
 # Set up your OpenAI API credentials
 openai.api_key = 'YOUR_API_KEY'
